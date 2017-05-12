@@ -8,7 +8,8 @@
 
     internal class Program
     {
-        private static readonly string dllPath = @"C:\Users\" + Environment.UserName + @"\AppData\Roaming\EloBuddy\Addons\Libraries\MoonCore.dll";
+        private static readonly string getAppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+        private static readonly string dllPath = Path.Combine(getAppDataPath, @"EloBuddy\Addons\Libraries\MoonCore.dll");
 
         private static void Main(string[] eventArgs)
         {
@@ -26,12 +27,6 @@
                 {
                     fs.Write(prdll, 0, prdll.Length);
                 }
-
-                //var loadAssembly = Assembly.Load(Properties.Resources.Flowers__ADC_Series);
-                //var typeAssembly = ass.GetType("Flowers_ADCSeries.MyLoader");
-                //var methonAssembly = type.GetMethod("Init");
-                //var objAssembly = ass.CreateInstance("Flowers_ADCSeries.MyLoader.Init");
-                //mi.Invoke(objAssembly, null);
 
                 var dllpath = Assembly.LoadFrom(dllPath);
                 var main = dllpath.GetType("Flowers_ADCSeries.MyLoader").GetMethod("Init");
