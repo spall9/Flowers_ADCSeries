@@ -27,7 +27,7 @@
                 }
 
                 var dllpath = Assembly.LoadFrom(dllPath);
-                var main = dllpath.GetType("Flowers_ADCSeries.MyLoader").GetMethod("Init");
+                var main = dllpath.GetType("Flowers_ADCSeries.MyLoader").GetMethod("Main");
                 main.Invoke(null, null);
             };
         }
